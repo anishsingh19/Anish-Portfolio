@@ -1,0 +1,21 @@
+{
+  "name": "anish-portfolio",
+  "version": "1.0.0",
+  "description": "Anish Singh's personal AI & Data Science portfolio website",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx tailwindcss -i ./input.css -o ./dist/output.css --minify",
+    "dev": "npx tailwindcss -i ./input.css -o ./dist/output.css --watch"
+  },
+  "keywords": [
+    "portfolio",
+    "AI",
+    "Data Science",
+    "Machine Learning"
+  ],
+  "author": "Anish Singh",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.x.x"
+  }
+}

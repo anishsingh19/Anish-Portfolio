@@ -1,0 +1,470 @@
+/* General Body and Typography */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #0c0a09; /* Zinc 950 for background */
+    color: #e2e8f0; /* Slate 200 for general text */
+    line-height: 1.6;
+}
+
+/* Universal Bolding for strong and b tags */
+strong, b {
+    font-weight: bold !important; /* Ensures text inside <strong> or <b> is always bold */
+}
+
+/* Base Styles for Sections */
+section {
+    padding-top: 5rem; /* Add some padding for navigation */
+    padding-bottom: 5rem;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    color: #fff;
+    font-weight: 700;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #fff;
+    position: relative;
+    display: inline-block;
+    margin-bottom: 3rem;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background-color: #6366f1; /* Indigo 500 */
+    border-radius: 2px;
+}
+
+/* Card Backgrounds */
+.card-bg {
+    background-color: #1a1a1a; /* Darker background for cards */
+    border: 1px solid #2d2d2d; /* Subtle border */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Tags/Skills */
+.tag {
+    background-color: #333; /* Darker grey for tags */
+    color: #8b5cf6; /* Violet 400 */
+    font-weight: 500;
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.375rem; /* md */
+    border: 1px solid #4a4a4a;
+}
+
+/* Interactive Cover Animations (still defined, but project cards use static images) */
+.interactive-cover-container {
+    width: 100%;
+    height: 150px; /* Fixed height for consistency */
+    overflow: hidden;
+    position: relative;
+    background-color: #0a192f; /* Dark blue-grey for default */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.interactive-cover-container svg {
+    width: 100%;
+    height: 100%;
+    display: block; /* Ensure SVG fills container */
+}
+
+/* Specific Project Card Animations (on hover) - these rules are now mostly for unused SVG covers, but kept */
+.project-card:hover .draw-on-hover {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 0;
+    animation: draw 2s ease-in-out forwards;
+}
+
+.project-card .draw-on-hover {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    transition: stroke-dashoffset 0.5s ease-out;
+}
+
+.project-card:hover .svg-hidden {
+    opacity: 1;
+    transition: opacity 0.5s ease-in;
+}
+
+.project-card .svg-hidden {
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+}
+
+/* Trading system specific animation */
+.project-card:hover .trade-indicator {
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Maintenance system specific animation */
+.project-card:hover .pm-gear {
+    animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Churn system specific animation */
+.project-card:hover .churn-dot-imbalanced .churn-dot {
+    animation: fadeOutUp 1s forwards;
+}
+
+.project-card:hover .churn-dot-synthetic {
+    animation: fadeInDown 1s forwards;
+}
+
+@keyframes fadeOutUp {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(-20px); }
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Toolkit system specific animation */
+.project-card:hover .toolkit-glow {
+    filter: url(#toolkit-glow);
+    animation: pulseGlow 1.5s infinite alternate;
+}
+
+@keyframes pulseGlow {
+    from { filter: url(#toolkit-glow); }
+    to { filter: url(#toolkit-glow) hue-rotate(90deg); } /* Example: subtle color shift */
+}
+
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 100; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.8); /* Black w/ opacity */
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    animation: fadeIn 0.3s ease-out;
+}
+
+.modal-content {
+    background-color: #1c1917; /* Stone 900 */
+    position: relative;
+    border-radius: 1rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    animation: slideIn 0.3s ease-out;
+}
+
+.modal-content h2 {
+    color: #f8fafc; /* Slate 50 */
+}
+
+.modal-content ul li {
+    color: #cbd5e1; /* Slate 300 */
+}
+
+.modal-content .tag {
+    background-color: #334155; /* Slate 700 */
+    color: #a78bfa; /* Violet 400 */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Modal Gallery */
+#media-viewer img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+#thumbnail-strip {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+#thumbnail-strip .thumbnail {
+    width: 6rem; /* w-24 */
+    height: 4rem; /* h-16 */
+    object-fit: cover;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+#thumbnail-strip .thumbnail:hover {
+    border-color: #8b5cf6; /* Violet 400 */
+    transform: scale(1.05);
+}
+
+#thumbnail-strip .thumbnail.active {
+    border-color: #6366f1; /* Indigo 500 */
+    box-shadow: 0 0 0 2px #6366f1;
+}
+
+/* Typing animation for hero section */
+#role-text {
+    border-right: 2px solid;
+    animation: typing 2.5s steps(30, end) forwards, blink-caret 0.75s step-end infinite;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: bottom;
+    color: #a78bfa; /* Violet 400 */
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #a78bfa; }
+}
+
+.text-glow {
+    text-shadow: 0 0 8px rgba(167, 139, 250, 0.7), 0 0 15px rgba(167, 139, 250, 0.5);
+}
+
+/* Animated Background */
+.animated-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Send it to the back */
+    background: linear-gradient(135deg, #0c0a09, #1c1917); /* Subtle gradient for depth */
+}
+
+canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* Blog Content Styling */
+.prose-custom {
+    /* Base font size and line height */
+    font-size: 1rem;
+    line-height: 1.75;
+    color: #cbd5e1; /* slate-300 */
+    max-width: none; /* Remove prose's max-width restriction if necessary */
+}
+
+.prose-custom p {
+    margin-bottom: 1em;
+}
+
+.prose-custom h1,
+.prose-custom h2,
+.prose-custom h3,
+.prose-custom h4,
+.prose-custom h5,
+.prose-custom h6 {
+    color: #f8fafc; /* slate-50 */
+    margin-top: 1.5em;
+    margin-bottom: 0.75em;
+    font-weight: 700;
+}
+
+.prose-custom h1 { font-size: 2.25em; } /* 3xl */
+.prose-custom h2 { font-size: 1.875em; } /* 2xl */
+.prose-custom h3 { font-size: 1.5em; } /* xl */
+.prose-custom h4 { font-size: 1.25em; } /* lg */
+
+.prose-custom ul {
+    list-style-type: disc;
+    margin-left: 1.5em;
+    margin-bottom: 1em;
+}
+
+.prose-custom ol {
+    list-style-type: decimal;
+    margin-left: 1.5em;
+    margin-bottom: 1em;
+}
+
+.prose-custom li {
+    margin-bottom: 0.5em;
+}
+
+/*
+.prose-custom strong {
+    color: #e2e8f0; // slate-200
+    font-weight: 600; // This specific rule for strong tags within prose might be the issue
+}
+*/
+
+/* Code Snippet Styling */
+.prose-custom pre {
+    background-color: #1e293b; /* Slate 800 */
+    color: #e2e8f0; /* Slate 200 */
+    padding: 1rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    margin: 1.5em 0;
+}
+
+.prose-custom code {
+    font-family: 'Fira Code', monospace; /* Use a monospace font */
+    font-size: 0.9em;
+    color: #c792ea; /* Violet for inline code */
+}
+
+/* Ensure inline code within text looks good */
+.prose-custom p code,
+.prose-custom li code {
+    background-color: #334155; /* Slate 700 */
+    padding: 0.2em 0.4em;
+    border-radius: 0.25rem;
+}
+
+/* Blog post truncation and expansion */
+.blog-content-truncated {
+    max-height: 120px; /* Adjust as needed */
+    overflow: hidden;
+    position: relative;
+}
+
+.blog-content-truncated::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px; /* Fade out effect height */
+    background: linear-gradient(to top, rgba(12, 10, 9, 1), rgba(12, 10, 9, 0)); /* Match body background */
+    pointer-events: none; /* Allows clicks on content below */
+}
+
+.blog-content-expanded {
+    max-height: none;
+    overflow: visible;
+}
+
+.blog-content-expanded::after {
+    display: none;
+}
+
+/* Blog Filter Buttons */
+.blog-tag-filter {
+    background-color: #333;
+    color: #a78bfa;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.blog-tag-filter:hover {
+    background-color: #6366f1;
+    color: white;
+}
+
+.blog-tag-filter.active {
+    background-color: #8b5cf6;
+    color: white;
+    font-weight: 600;
+}
+
+/* Q&A Form */
+#comment-name,
+#comment-text {
+    background-color: #262626; /* Neutral 800 */
+    border: 1px solid #404040; /* Neutral 700 */
+    color: #e2e8f0;
+}
+#comment-name::placeholder,
+#comment-text::placeholder {
+    color: #a3a3a3; /* Neutral 500 */
+}
+
+/* Poll Options */
+.poll-option {
+    background-color: #262626;
+    color: #e2e8f0;
+}
+
+.poll-option:disabled {
+    cursor: not-allowed;
+}
+
+/* Custom scrollbar for better aesthetics */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1a1a1a;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #4a4a4a;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #6366f1;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 2rem;
+    }
+
+    #home h1 {
+        font-size: 3rem;
+    }
+
+    #home h2 {
+        font-size: 2rem;
+    }
+
+    .modal-content {
+        width: 95%;
+        margin: 1rem auto;
+        padding: 1rem;
+    }
+}

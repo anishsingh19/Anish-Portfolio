@@ -1,0 +1,119 @@
+/* Tailwind CSS directives - MUST be at the top */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Your custom CSS from style.css goes here, AFTER the Tailwind directives */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #0a0a0a;
+    color: #e2e8f0;
+}
+.text-glow {
+    text-shadow: 0 0 8px rgba(99, 102, 241, 0.6), 0 0 20px rgba(139, 92, 246, 0.4);
+}
+.card-bg {
+    background-color: rgba(23, 23, 23, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.section-title {
+    font-weight: 900;
+    font-size: 2.25rem;
+    background: -webkit-linear-gradient(45deg, #818cf8, #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.modal {
+    display: none; position: fixed; z-index: 50; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.8); backdrop-filter: blur(5px); animation: fadeIn 0.3s ease-out; align-items: center; justify-content: center;
+}
+.modal-content {
+    animation: slideIn 0.3s ease-out; margin-top: 2rem; margin-bottom: 2rem;
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
+@keyframes slideIn { from { transform: translateY(-30px) scale(0.98); opacity: 0; } to { transform: translateY(0) scale(1); opacity: 1; } }
+
+.tag { background-color: rgba(167, 139, 250, 0.1); color: #c4b5fd; border: 1px solid rgba(167, 139, 250, 0.2); }
+.animated-background { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+.thumbnail { cursor: pointer; border: 2px solid transparent; transition: border-color 0.3s; opacity: 0.6; }
+.thumbnail.active, .thumbnail:hover { border-color: #818cf8; opacity: 1; }
+.timeline-item::before { content: ''; position: absolute; left: -30px; top: 0; width: 20px; height: 20px; border-radius: 50%; background-color: #818cf8; border: 4px solid #0a0a0a; }
+.comment-form input, .comment-form textarea { background-color: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); }
+
+.blog-tag-filter { cursor: pointer; transition: all 0.2s ease-in-out; }
+.blog-tag-filter.active { background-color: #6366f1; color: #fff; border-color: #6366f1; }
+.prose-custom p, .prose-custom ul, .prose-custom blockquote { color: #cbd5e1; }
+.prose-custom strong { color: #a78bfa; }
+.prose-custom pre {
+    background-color: #1a202c;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+.prose-custom code {
+    font-family: monospace;
+    font-size: 0.875rem;
+    color: #e2e8f0;
+}
+
+/* Interactive Cover Styles */
+.interactive-cover-container {
+    width: 100%;
+    height: 192px; /* h-48 */
+    overflow: hidden;
+    position: relative;
+}
+.interactive-cover-container svg {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease;
+}
+.project-card:hover .interactive-cover-container svg {
+    transform: scale(1.05);
+}
+
+/* General animation classes */
+.svg-fade-in { opacity: 0; transition: opacity 0.5s ease; }
+.project-card:hover .svg-fade-in { opacity: 1; }
+
+/* AI Toolkit Cover */
+.toolkit-icon { transition: transform 0.3s ease; }
+.project-card:hover .toolkit-icon { transform: translateY(-5px); }
+.toolkit-glow { filter: drop-shadow(0 0 5px rgba(139, 92, 246, 0.7)); }
+
+/* Trading System */
+@keyframes pulse { 0%, 100% { opacity: 0.7; } 50% { opacity: 1; } }
+.trading-pulse { animation: pulse 2s infinite ease-in-out; }
+
+/* Predictive Maintenance */
+@keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+.pm-gear { animation: rotate 20s linear infinite; transform-origin: center; }
+.pm-flow { stroke-dasharray: 20; stroke-dashoffset: 100; animation: flow 2s linear infinite; }
+@keyframes flow { to { stroke-dashoffset: 0; } }
+
+/* Blog Read More */
+.blog-content-truncated {
+    max-height: 100px; /* Adjust as needed */
+    overflow: hidden;
+    position: relative;
+}
+.blog-content-truncated::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40px; /* Fade out height */
+    background: linear-gradient(to top, rgba(10, 10, 10, 0.9), transparent);
+    pointer-events: none; /* Allows clicking through the overlay */
+}
+.blog-content-expanded {
+    max-height: none;
+    overflow: visible;
+}
+.blog-content-expanded::after {
+    display: none;
+}
