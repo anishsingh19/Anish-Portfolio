@@ -41,7 +41,7 @@ The blog section delves into critical topics such as:
 
 ## 🔗 Live Demo
 Explore the live version of this portfolio deployed on Vercel:
-[https://green.vercel.app/](green.vercel.app/)
+[https://anish-portfolio-iota.vercel.app/](https://anish-portfolio-iota.vercel.app/)
 
 ## 🚀 Getting Started (Local Setup)
 To run this project locally, follow these steps:
