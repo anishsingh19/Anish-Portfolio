@@ -1,0 +1,5 @@
+{
+  "buildCommand": "npx tailwindcss -i ./input.css -o ./output.css --minify",
+  "outputDirectory": ".",
+  "framework": "static"
+}
