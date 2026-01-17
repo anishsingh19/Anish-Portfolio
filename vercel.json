@@ -1,5 +1,5 @@
 {
-  "buildCommand": "npx tailwindcss -i ./input.css -o ./output.css --minify",
+  "buildCommand": "npm run build",
   "outputDirectory": ".",
   "framework": "static"
 }
